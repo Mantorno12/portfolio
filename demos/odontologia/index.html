@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Turnos · Centro Odontológico</title>
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F8F8; --card:#FFFFFF; --ink:#18232A; --ink2:#4D5B63; --ink3:#7E8A91; --line:#E4E8EA; --line2:#EEF1F2;
+  --pri:#1F5F6B; --pri-d:#164852; --pri-soft:#E8F1F2;
+  --amber:#9A6A12; --amber-soft:#FBF3E2; --green:#256B47; --green-soft:#E6F3EB; --blue:#2E5A88; --blue-soft:#E7EEF6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);font-size:15px;line-height:1.5}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+.topbar{background:var(--card);border-bottom:1px solid var(--line)}
+.topbar .in{max-width:1200px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px}
+.mark{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--pri);display:grid;place-items:center;color:var(--pri)}
+.mark svg{width:18px;height:18px}
+.switch{display:flex;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:3px}
+.switch button{border:0;background:none;padding:7px 14px;border-radius:7px;color:var(--ink2);font-size:14px;min-height:36px}
+.switch button.on{background:var(--card);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+
+/* Paciente */
+.wrap{max-width:980px;margin:0 auto;padding:44px 28px 80px}
+.steps{display:flex;gap:8px;margin-bottom:36px;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:8px;color:var(--ink3);font-size:14px}
+.step i{width:24px;height:24px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-style:normal;font-size:12px;background:var(--card)}
+.step.on{color:var(--ink);font-weight:600}.step.on i{background:var(--pri);border-color:var(--pri);color:#fff}
+.step.done i{background:var(--pri-soft);border-color:var(--pri-soft);color:var(--pri)}
+.step+.step::before{content:"";width:28px;height:1px;background:var(--line);margin-right:4px}
+h1{font-size:32px;font-weight:600;letter-spacing:-.02em;margin:0 0 6px}
+.sub{color:var(--ink2);margin:0 0 30px;font-size:16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.opt{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:6px;transition:border-color .15s}
+.opt:hover{border-color:#B9C7CA}
+.opt.on{border-color:var(--pri);box-shadow:0 0 0 3px var(--pri-soft)}
+.opt b{font-size:16px;font-weight:600}
+.opt span{color:var(--ink3);font-size:14px}
+.cols{display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
+@media (max-width:820px){.cols{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+.pro{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;border:1px solid transparent;width:100%;background:none;text-align:left}
+.pro.on{border-color:var(--pri);background:var(--pri-soft)}
+.av{width:40px;height:40px;border-radius:50%;background:var(--pri-soft);color:var(--pri);display:grid;place-items:center;font-weight:600;font-size:14px;flex:0 0 auto}
+.pro small{display:block;color:var(--ink3);font-size:13px}
+.dates{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-bottom:20px}
+.date{background:none;border:1px solid var(--line);border-radius:10px;padding:10px 0;display:flex;flex-direction:column;align-items:center;min-height:44px}
+.date small{font-size:12px;color:var(--ink3);text-transform:capitalize}
+.date b{font-size:18px;font-weight:600}
+.date.on{background:var(--pri);border-color:var(--pri);color:#fff}.date.on small{color:#CFE2E5}
+.times-t{font-size:13px;color:var(--ink3);margin:6px 0 10px;text-transform:uppercase;letter-spacing:.06em}
+.times{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.time{background:none;border:1px solid var(--line);border-radius:8px;padding:9px 0;min-height:42px}
+.time.on{background:var(--pri);border-color:var(--pri);color:#fff;font-weight:600}
+.time[disabled]{color:#B5BEC3;background:var(--bg);text-decoration:line-through;cursor:not-allowed}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:640px){.form{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;color:var(--ink2);font-weight:500}
+.field input,.field select{border:1px solid var(--line);border-radius:10px;padding:11px 12px;background:var(--card);min-height:44px}
+.field input:focus,.field select:focus{outline:2px solid var(--pri);outline-offset:-1px;border-color:var(--pri)}
+.summary{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:12px}
+.srow{display:flex;justify-content:space-between;gap:12px;font-size:14px}.srow span{color:var(--ink3)}
+.actions{display:flex;justify-content:space-between;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{border:0;border-radius:10px;padding:0 22px;min-height:46px;font-weight:600;background:var(--pri);color:#fff}
+.btn:hover{background:var(--pri-d)}
+.btn[disabled]{background:#C9D3D5;cursor:not-allowed}
+.btn.ghost{background:none;color:var(--ink2);border:1px solid var(--line)}
+.ok{max-width:520px;margin:30px auto 0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+.ok .check{width:56px;height:56px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center}
+
+/* Panel interno */
+.admin{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 61px)}
+@media (max-width:900px){.admin{grid-template-columns:1fr}}
+.side{background:var(--card);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:4px}
+.side button{border:0;background:none;text-align:left;padding:10px 12px;border-radius:8px;color:var(--ink2);display:flex;gap:10px;align-items:center;min-height:42px}
+.side button svg{width:18px;height:18px}
+.side button.on{background:var(--pri-soft);color:var(--pri);font-weight:600}
+.content{padding:26px 28px;min-width:0}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.head h2{margin:0;font-size:24px;font-weight:600;letter-spacing:-.01em}
+.head p{margin:2px 0 0;color:var(--ink3)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
+@media (max-width:700px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi b{display:block;font-size:24px;font-weight:600}.kpi span{color:var(--ink3);font-size:13px}
+.cal-box{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow-x:auto}
+.cal{display:grid;min-width:620px}
+.cal .hd{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;font-weight:600;font-size:14px}
+.cal .hd small{display:block;font-weight:400;color:var(--ink3);font-size:12px}
+.cal .hr{font-size:12px;color:var(--ink3);padding:4px 10px;border-right:1px solid var(--line);text-align:right}
+.cal .cell{border-left:1px solid var(--line2);border-top:1px solid var(--line2);position:relative;height:52px}
+.appt{position:absolute;left:6px;right:6px;top:4px;border-radius:8px;padding:6px 10px;font-size:13px;line-height:1.3;border:0;text-align:left;overflow:hidden}
+.appt b{font-weight:600;display:block}
+.appt.c{background:var(--blue-soft);color:var(--blue)}
+.appt.s{background:var(--green-soft);color:var(--green)}
+.appt.p{background:var(--amber-soft);color:var(--amber)}
+.appt.sel{outline:2px solid var(--ink)}
+.legend{display:flex;gap:16px;font-size:13px;color:var(--ink2);flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px;background:currentColor}
+.agenda-wrap{display:grid;grid-template-columns:1fr 280px;gap:18px;align-items:start}
+@media (max-width:1100px){.agenda-wrap{grid-template-columns:1fr}}
+.detail h3{margin:0 0 2px;font-size:18px}
+.badge{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-weight:500;color:var(--ink3);font-size:13px;padding:12px 16px;border-bottom:1px solid var(--line)}
+td{padding:13px 16px;border-bottom:1px solid var(--line2)}
+.search{border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:260px;background:var(--card);min-height:44px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const SPECS = [
+  {id:'gen', n:'Odontología general', d:'Controles, limpiezas y arreglos.', min:30},
+  {id:'ort', n:'Ortodoncia', d:'Brackets y alineadores.', min:30},
+  {id:'imp', n:'Implantes', d:'Evaluación y colocación.', min:45},
+  {id:'est', n:'Estética dental', d:'Blanqueamiento y carillas.', min:45},
+  {id:'ped', n:'Odontopediatría', d:'Atención para chicos.', min:30},
+  {id:'end', n:'Endodoncia', d:'Tratamientos de conducto.', min:60}
+];
+const PROS = [
+  {id:'p1', n:'Dra. Laura Benítez', s:['gen','est'], ini:'LB'},
+  {id:'p2', n:'Dr. Andrés Quiroga', s:['ort'], ini:'AQ'},
+  {id:'p3', n:'Dra. Carolina Ferraro', s:['imp','end','gen'], ini:'CF'},
+  {id:'p4', n:'Dr. Pablo Medina', s:['ped','gen'], ini:'PM'}
+];
+const HOURS = ['09:00','09:30','10:00','10:30','11:00','11:30','12:00','12:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30'];
+const PACS = ['Mariana López','Jorge Domínguez','Florencia Ríos','Gustavo Peralta','Lucía Fernández','Esteban Ruiz','Natalia Sosa','Carlos Méndez','Belén Acosta','Federico Ibarra','Silvina Paz','Tomás Herrera','Andrea Gómez','Marcos Vidal','Julieta Romero','Ricardo Funes','Cecilia Navarro','Martín Ledesma','Valeria Castro','Diego Molina','Paula Giménez','Sergio Rojas','Lorena Benítez','Hugo Cabrera','Daniela Ortiz','Ignacio Suárez','Verónica Luna','Alejandro Torres','Gabriela Ponce','Matías Correa'];
+const OS = ['OSDE','Swiss Medical','Galeno','Medifé','Particular'];
+const DOW = ['dom','lun','mar','mié','jue','vie','sáb'];
+const MON = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+function seed(s){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))>>>0;return h}
+const base=new Date();base.setHours(12,0,0,0);
+const DATES=[];for(let i=1;DATES.length<6;i++){const d=new Date(base);d.setDate(base.getDate()+i);if(d.getDay()!==0)DATES.push(d)}
+
+const S={view:'pac', step:1, spec:null, pro:null, date:0, time:null, form:{nombre:'',dni:'',email:'',tel:'',os:''}, side:'agenda', sel:null, q:''};
+function set(p){Object.assign(S,p);render()}
+const svg=(p,w)=>'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+(w||1.8)+'" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
+const ICON={
+  tooth:'<path d="M7 3c-2.5 0-4 2-4 4.5 0 3 1.5 4.5 2 7.5.5 3 1 6 2.5 6s1.5-4 2.5-5.5c.5-.7 1.5-.7 2 0C13 17 13 21 14.5 21s2-3 2.5-6c.5-3 2-4.5 2-7.5C19 5 17.5 3 15 3c-1.5 0-2 1-3 1S8.5 3 7 3z"/>',
+  cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c1.8.6 3 2.4 3.5 5.5"/>',
+  doc:'<circle cx="12" cy="7" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
+  check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>'
+};
+function taken(pro,date,h){return seed(pro+date+h)%3===0}
+
+/* ---------- Paciente ---------- */
+function stepper(){
+  const L=['Especialidad','Profesional y horario','Tus datos','Confirmación'];
+  return '<div class="steps">'+L.map((l,i)=>{const n=i+1;return '<div class="step'+(S.step===n?' on':S.step>n?' done':'')+'"><i>'+(S.step>n?svg(ICON.check,2.5).replace('<svg','<svg width="12" height="12"'):n)+'</i>'+l+'</div>'}).join('')+'</div>';
+}
+function pac(){
+  let h='<div class="wrap">'+stepper();
+  if(S.step===1){
+    h+='<h1>¿Qué tipo de consulta necesitás?</h1><p class="sub">Elegí la especialidad y te mostramos los profesionales disponibles.</p><div class="grid3">'+
+      SPECS.map(s=>'<button class="opt'+(S.spec===s.id?' on':'')+'" data-spec="'+s.id+'"><b>'+s.n+'</b><span>'+s.d+'</span><span>Duración aprox. '+s.min+' min</span></button>').join('')+'</div>'+
+      '<div class="actions"><span></span><button class="btn" data-next="2"'+(S.spec?'':' disabled')+'>Continuar</button></div>';
+  } else if(S.step===2){
+    const pros=PROS.filter(p=>p.s.includes(S.spec));
+    const pro=S.pro||pros[0].id; if(!S.pro) S.pro=pro;
+    const d=DATES[S.date], key=d.toISOString().slice(0,10);
+    h+='<h1>Elegí profesional y horario</h1><p class="sub">'+SPECS.find(s=>s.id===S.spec).n+' · turnos de las próximas dos semanas.</p>'+
+    '<div class="cols"><div class="panel" style="display:flex;flex-direction:column;gap:4px">'+
+      pros.map(p=>'<button class="pro'+(p.id===pro?' on':'')+'" data-pro="'+p.id+'"><span class="av">'+p.ini+'</span><span><b style="font-weight:600">'+p.n+'</b><small>'+p.s.map(x=>SPECS.find(s=>s.id===x).n).join(' · ')+'</small></span></button>').join('')+
+    '</div><div class="panel"><div class="dates">'+DATES.map((x,i)=>'<button class="date'+(i===S.date?' on':'')+'" data-date="'+i+'"><small>'+DOW[x.getDay()]+'</small><b>'+x.getDate()+'</b><small>'+MON[x.getMonth()]+'</small></button>').join('')+'</div>'+
+      '<div class="times-t">Mañana</div><div class="times">'+HOURS.slice(0,8).map(t=>tbtn(pro,key,t)).join('')+'</div>'+
+      '<div class="times-t" style="margin-top:18px">Tarde</div><div class="times">'+HOURS.slice(8).map(t=>tbtn(pro,key,t)).join('')+'</div></div></div>'+
+    '<div class="actions"><button class="btn ghost" data-next="1">Volver</button><button class="btn" data-next="3"'+(S.time?'':' disabled')+'>Continuar</button></div>';
+  } else if(S.step===3){
+    const f=S.form;
+    h+='<h1>Completá tus datos</h1><p class="sub">Los usamos solo para confirmar y recordarte el turno.</p>'+
+    '<div class="cols" style="grid-template-columns:1fr 300px"><div class="panel"><div class="form">'+
+      fld('nombre','Nombre y apellido','text',f.nombre)+fld('dni','DNI','text',f.dni)+fld('email','Email','email',f.email)+fld('tel','Teléfono','tel',f.tel)+
+      '<div class="field" style="grid-column:1/-1"><label for="f-os">Cobertura</label><select id="f-os" data-f="os"><option value="">Seleccioná una opción</option>'+OS.map(o=>'<option'+(f.os===o?' selected':'')+'>'+o+'</option>').join('')+'</select></div>'+
+    '</div></div>'+resumen()+'</div>'+
+    '<div class="actions"><button class="btn ghost" data-next="2">Volver</button><button class="btn" data-next="4"'+(f.nombre&&f.email?'':' disabled')+'>Confirmar turno</button></div>';
+  } else {
+    h+='<div class="ok"><div class="check">'+svg(ICON.check,2.4).replace('<svg','<svg width="28" height="28"')+'</div><h1>Turno confirmado</h1><p class="sub" style="margin:0">Te enviamos los detalles a '+(S.form.email||'tu email')+'. Te vamos a recordar el turno un día antes.</p></div>'+
+      '<div style="max-width:420px;margin:28px auto 0">'+resumen()+'</div><div style="text-align:center;margin-top:24px"><button class="btn ghost" data-reset="1">Sacar otro turno</button></div>';
+  }
+  return h+'</div>';
+}
+function tbtn(pro,key,t){const tk=taken(pro,key,t);return '<button class="time'+(S.time===t?' on':'')+'" data-time="'+t+'"'+(tk?' disabled aria-label="'+t+' no disponible"':'')+'>'+t+'</button>'}
+function fld(k,l,type,v){return '<div class="field"><label for="f-'+k+'">'+l+'</label><input id="f-'+k+'" type="'+type+'" data-f="'+k+'" value="'+v.replace(/"/g,'&quot;')+'"></div>'}
+function resumen(){
+  const d=DATES[S.date],p=PROS.find(x=>x.id===S.pro),s=SPECS.find(x=>x.id===S.spec);
+  return '<div class="summary"><b>Resumen del turno</b>'+
+    '<div class="srow"><span>Especialidad</span>'+s.n+'</div><div class="srow"><span>Profesional</span>'+p.n+'</div>'+
+    '<div class="srow"><span>Fecha</span>'+DOW[d.getDay()]+' '+d.getDate()+' de '+MON[d.getMonth()]+'</div><div class="srow"><span>Hora</span>'+S.time+' hs</div>'+
+    '<div class="srow"><span>Dirección</span>[Dirección del centro]</div></div>';
+}
+
+/* ---------- Panel interno ---------- */
+const STAT={c:['Confirmado','c'],s:['En sala','s'],p:['Pendiente','p']};
+function dayAppts(){
+  const key=base.toISOString().slice(0,10), out=[]; let k=0;
+  PROS.forEach((p,pi)=>HOURS.forEach((h,hi)=>{
+    const r=seed(p.id+key+h);
+    if(r%5<2){
+      const spec=SPECS.find(s=>s.id===p.s[r%p.s.length]);
+      const st=hi<3?(r%2?'s':'c'):(r%7===0?'p':'c');
+      out.push({id:p.id+h,pro:p,h,hi,pac:PACS[(k++*7+3)%PACS.length],spec,st,os:OS[(r>>>5)%OS.length]});
+    }
+  }));
+  return out;
+}
+function admin(){
+  const nav=[['agenda','Agenda',ICON.cal],['pacientes','Pacientes',ICON.users],['profesionales','Profesionales',ICON.doc]];
+  return '<div class="admin"><aside class="side">'+nav.map(([k,l,i])=>'<button class="'+(S.side===k?'on':'')+'" data-side="'+k+'">'+svg(i)+l+'</button>').join('')+'</aside><main class="content">'+
+    (S.side==='agenda'?agenda():S.side==='pacientes'?pacientes():profesionales())+'</main></div>';
+}
+function agenda(){
+  const A=dayAppts(), sel=A.find(a=>a.id===S.sel)||A[0];
+  const fecha=DOW[base.getDay()]+' '+base.getDate()+' de '+MON[base.getMonth()];
+  let g='<div class="cal" style="grid-template-columns:64px repeat('+PROS.length+',minmax(0,1fr))"><div class="hd" style="border-right:1px solid var(--line)"></div>'+
+    PROS.map(p=>'<div class="hd"><span class="av" style="width:32px;height:32px;font-size:12px">'+p.ini+'</span><span>'+p.n+'<small>'+A.filter(a=>a.pro.id===p.id).length+' turnos</small></span></div>').join('');
+  HOURS.forEach(h=>{
+    g+='<div class="hr">'+h+'</div>'+PROS.map(p=>{
+      const a=A.find(x=>x.pro.id===p.id&&x.h===h);
+      return '<div class="cell">'+(a?'<button class="appt '+a.st+(sel&&a.id===sel.id?' sel':'')+'" data-sel="'+a.id+'"><b>'+a.pac+'</b>'+a.spec.n+'</button>':'')+'</div>';
+    }).join('');
+  });
+  g+='</div>';
+  const n=A.length, en=A.filter(a=>a.st==='s').length, pe=A.filter(a=>a.st==='p').length;
+  return '<div class="head"><div><h2>Agenda del día</h2><p>'+fecha+'</p></div><div class="legend"><span style="color:#2E5A88">Confirmado</span><span style="color:#256B47">En sala</span><span style="color:#9A6A12">Pendiente</span></div></div>'+
+  '<div class="kpis"><div class="kpi"><b>'+n+'</b><span>Turnos hoy</span></div><div class="kpi"><b>'+en+'</b><span>En sala de espera</span></div><div class="kpi"><b>'+pe+'</b><span>Sin confirmar</span></div><div class="kpi"><b>'+(PROS.length*HOURS.length-n)+'</b><span>Horarios libres</span></div></div>'+
+  '<div class="agenda-wrap"><div class="cal-box">'+g+'</div>'+
+  (sel?'<div class="panel detail"><div style="display:flex;gap:12px;align-items:center;margin-bottom:14px"><span class="av">'+sel.pac.split(' ').map(x=>x[0]).join('')+'</span><div><h3>'+sel.pac+'</h3><span class="badge" style="background:var(--'+({c:'blue',s:'green',p:'amber'})[sel.st]+'-soft);color:var(--'+({c:'blue',s:'green',p:'amber'})[sel.st]+')">'+STAT[sel.st][0]+'</span></div></div>'+
+    '<div style="display:flex;flex-direction:column;gap:10px"><div class="srow"><span>Hora</span>'+sel.h+' hs</div><div class="srow"><span>Profesional</span>'+sel.pro.n+'</div><div class="srow"><span>Motivo</span>'+sel.spec.n+'</div><div class="srow"><span>Cobertura</span>'+sel.os+'</div></div>'+
+    '<div style="display:flex;flex-direction:column;gap:8px;margin-top:18px"><button class="btn">Marcar llegada</button><button class="btn ghost">Reprogramar</button></div></div>':'')+
+  '</div>';
+}
+function pacientes(){
+  const rows=PACS.map((p,i)=>({p,dni:(20+seed(p)%25)+'.'+String(seed(p+'a')%1000).padStart(3,'0')+'.'+String(seed(p+'b')%1000).padStart(3,'0'),os:OS[seed(p)%OS.length],pro:PROS[seed(p+'x')%PROS.length].n,ult:(1+seed(p+'d')%27)+' '+MON[(base.getMonth()+11-(seed(p)%4))%12]})).filter(r=>r.p.toLowerCase().includes(S.q.toLowerCase()));
+  return '<div class="head"><div><h2>Pacientes</h2><p>'+PACS.length+' pacientes registrados</p></div><label style="display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--ink3)">Buscar<input class="search" data-q="1" placeholder="Nombre del paciente" value="'+S.q+'"></label></div>'+
+  '<div class="cal-box"><table><thead><tr><th>Paciente</th><th>DNI</th><th>Cobertura</th><th>Profesional</th><th>Última visita</th></tr></thead><tbody>'+
+  rows.map(r=>'<tr><td style="display:flex;gap:10px;align-items:center"><span class="av" style="width:32px;height:32px;font-size:12px">'+r.p.split(' ').map(x=>x[0]).join('')+'</span>'+r.p+'</td><td>'+r.dni+'</td><td>'+r.os+'</td><td>'+r.pro+'</td><td>'+r.ult+'</td></tr>').join('')+'</tbody></table></div>';
+}
+function profesionales(){
+  const A=dayAppts();
+  return '<div class="head"><div><h2>Profesionales</h2><p>Disponibilidad y carga de hoy</p></div></div><div class="grid3">'+
+  PROS.map(p=>{const n=A.filter(a=>a.pro.id===p.id).length;const pct=Math.round(n/HOURS.length*100);return '<div class="panel"><div style="display:flex;gap:12px;align-items:center"><span class="av">'+p.ini+'</span><div><b style="font-weight:600">'+p.n+'</b><div style="color:var(--ink3);font-size:13px">'+p.s.map(x=>SPECS.find(s=>s.id===x).n).join(' · ')+'</div></div></div>'+
+    '<div style="margin-top:16px;display:flex;justify-content:space-between;font-size:13px;color:var(--ink2)"><span>Ocupación de hoy</span><b>'+pct+'%</b></div><div style="height:6px;background:var(--line2);border-radius:9px;margin-top:6px"><div style="height:6px;width:'+pct+'%;background:var(--pri);border-radius:9px"></div></div>'+
+    '<div style="margin-top:12px;font-size:13px;color:var(--ink3)">'+n+' turnos · '+(HOURS.length-n)+' horarios libres</div></div>'}).join('')+'</div>';
+}
+
+function render(){
+  document.getElementById('app').innerHTML='<div class="topbar"><div class="in"><div class="brand"><span class="mark">'+svg(ICON.tooth,1.6)+'</span>Centro Odontológico</div>'+
+    '<div class="switch" role="tablist"><button class="'+(S.view==='pac'?'on':'')+'" data-view="pac">Reservar turno</button><button class="'+(S.view==='adm'?'on':'')+'" data-view="adm">Panel interno</button></div></div></div>'+
+    (S.view==='pac'?pac():admin());
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('button');if(!t||t.disabled)return;const d=t.dataset;
+  if(d.view)set({view:d.view});
+  else if(d.spec)set({spec:d.spec,pro:null,time:null});
+  else if(d.pro)set({pro:d.pro,time:null});
+  else if(d.date)set({date:+d.date,time:null});
+  else if(d.time)set({time:d.time});
+  else if(d.next)set({step:+d.next});
+  else if(d.reset)set({step:1,spec:null,pro:null,time:null,date:0,form:{nombre:'',dni:'',email:'',tel:'',os:''}});
+  else if(d.side)set({side:d.side});
+  else if(d.sel)set({sel:d.sel});
+});
+document.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.dataset.f){S.form[t.dataset.f]=t.value;const b=document.querySelector('[data-next="4"]');if(b)b.disabled=!(S.form.nombre&&S.form.email)}
+  if(t.dataset.q){S.q=t.value;render();const i=document.querySelector('[data-q]');i.focus();i.setSelectionRange(i.value.length,i.value.length)}
+});
+document.addEventListener('change',e=>{if(e.target.dataset.f)S.form[e.target.dataset.f]=e.target.value});
+render();
+</script>
+</body>
+</html>

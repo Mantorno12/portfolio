@@ -1,0 +1,18 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Netlify (configuración local)
+.netlify/
+
+# Variables de entorno y logs
+.env
+.env.*
+*.log
+node_modules/

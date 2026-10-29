@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Matías Mingori · Apps, tableros y automatización</title>
+  <meta name="description" content="Portfolio de Matías Mingori: apps a medida, tableros y automatizaciones con IA. Proyecto destacado: VetAr, asistente veterinario con inteligencia artificial.">
+  <meta name="theme-color" content="#0a1512">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Matías Mingori · Apps, tableros y automatización">
+  <meta property="og:description" content="Diseño y desarrollo herramientas para que un negocio funcione mejor y decida con datos.">
+  <meta property="og:image" content="https://matias-mingori.netlify.app/assets/video/vetar-escritorio.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a1512'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-weight='700' font-size='30' fill='%2387e3b0'%3EMM%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#inicio" aria-label="Matías Mingori, ir al inicio">
+      <span class="brand-mark">MM</span>
+      <span class="brand-name">Matías Mingori</span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones">
+      <a href="#vetar">VetAr</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#como-trabajo">Cómo trabajo</a>
+    </nav>
+    <a class="btn btn-small" href="#contacto">Contacto</a>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+        <div class="grid-lines"></div>
+      </div>
+
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow drop" style="--d:0"><span class="pulse"></span> Apps a medida · Tableros · Automatización</p>
+          <h1 class="hero-title">
+            <span class="word drop" style="--d:1">Diseño</span> <span class="word drop" style="--d:2">y</span> <span class="word drop" style="--d:3">desarrollo</span>
+            <span class="word drop" style="--d:4">herramientas</span> <span class="word drop" style="--d:5">para</span> <span class="word drop" style="--d:6">que</span>
+            <span class="word drop" style="--d:7">un</span> <span class="word drop" style="--d:8">negocio</span> <em class="word drop grad" style="--d:9">funcione</em> <em class="word drop grad" style="--d:10">mejor</em>
+            <span class="word drop" style="--d:11">y</span> <span class="word drop" style="--d:12">decida</span> <span class="word drop" style="--d:13">con</span> <em class="word drop grad" style="--d:14">datos.</em>
+          </h1>
+          <p class="hero-sub drop" style="--d:15">Durante más de seis años medí operaciones de logística, e‑commerce y auditoría: armé tableros, seguí indicadores y encontré dónde se perdía tiempo y dinero. Hoy uso esa mirada para diseñar aplicaciones, tableros y automatizaciones pensadas desde cómo trabaja cada negocio.</p>
+          <div class="hero-cta drop" style="--d:16">
+            <a class="btn btn-glow" href="#vetar">Ver proyecto destacado <span aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="#contacto">Contactarme</a>
+          </div>
+          <ul class="hero-stats drop" style="--d:17">
+            <li><strong><span data-count="6">6</span>+</strong><span>años midiendo operaciones reales</span></li>
+            <li><strong data-count="3">3</strong><span>apps propias funcionando</span></li>
+            <li><strong data-count="189">189</strong><span>pruebas automáticas en VetAr</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-visual drop" style="--d:7">
+          <div class="phone float">
+            <video class="lazy-video" muted loop playsinline preload="none" poster="assets/video/vetar-celular.jpg" aria-label="Recorrido por VetAr en el celular">
+              <source data-src="assets/video/vetar-celular.mp4" type="video/mp4">
+              <source data-src="assets/video/vetar-celular.webm" type="video/webm">
+            </video>
+          </div>
+          <div class="chip chip-1 float-slow"><span class="dot"></span> IA que conoce a cada mascota</div>
+          <div class="chip chip-2 float-slow" style="animation-delay:-3s"><span class="chip-ico" aria-hidden="true">🔔</span> Recordatorios a tiempo</div>
+          <div class="chip chip-3 float-slow" style="animation-delay:-1.5s"><span class="chip-ico" aria-hidden="true">✓</span> Web y Android</div>
+        </div>
+      </div>
+
+      <a class="scroll-hint" href="#herramientas" aria-label="Bajar a la siguiente sección"><span></span></a>
+    </section>
+
+    <!-- HERRAMIENTAS -->
+    <section class="tools" id="herramientas" aria-label="Herramientas que uso">
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>Power BI <small>tableros</small></span><span>SQL <small>datos</small></span><span>Excel avanzado <small>análisis</small></span><span>Make · n8n <small>automatización</small></span><span>SAP FI <small>gestión</small></span><span>Flutter <small>apps web y mobile</small></span><span>HTML · CSS · JS <small>sitios web</small></span><span>Supabase <small>bases de datos</small></span><span>VS Code · Git <small>desarrollo</small></span><span>Vercel · Netlify <small>publicación</small></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VETAR DESTACADO -->
+    <section class="vetar" id="vetar">
+      <div class="vetar-glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="vetar-head">
+          <div class="reveal">
+            <p class="kicker"><img src="img/vetar-logo-blanco.png" alt="" width="28" height="28"> Proyecto destacado · App web · salud de mascotas</p>
+            <h2 class="vetar-title">Vet<span>Ar</span></h2>
+          </div>
+          <p class="lead reveal" style="--rd:.1s">Un asistente veterinario con IA para dueños de perros y gatos en Argentina que quieren tener vacunas, controles y medicación en un solo lugar, sin planillas ni papeles sueltos.</p>
+        </div>
+
+        <div class="browser reveal-zoom">
+          <div class="browser-bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="url">VetAr · versión web</span>
+            <div class="tabs" role="tablist" aria-label="Elegir video">
+              <button class="tab is-active" role="tab" aria-selected="true" data-video="assets/video/vetar-escritorio" data-poster="assets/video/vetar-escritorio.jpg">Adentro de la app</button>
+              <button class="tab" role="tab" aria-selected="false" data-video="assets/video/vetar-landing" data-poster="assets/video/vetar-landing.jpg">Página pública</button>
+            </div>
+          </div>
+          <div class="browser-screen">
+            <video id="vetar-desktop" class="lazy-video" muted loop playsinline preload="none" poster="assets/video/vetar-escritorio.jpg" aria-label="Recorrido por VetAr en la compu: inicio, ficha, historial, recordatorios y chat con IA">
+              <source data-src="assets/video/vetar-escritorio.mp4" type="video/mp4">
+              <source data-src="assets/video/vetar-escritorio.webm" type="video/webm">
+            </video>
+            <span class="live-badge"><span class="pulse"></span> Grabado en la app real</span>
+          </div>
+        </div>
+
+        <ol class="features">
+          <li class="feature reveal" style="--rd:0s"><span class="num">01</span><h3>Ficha de la mascota</h3><p>Foto, datos de salud y un puntaje de perfil completo.</p></li>
+          <li class="feature reveal" style="--rd:.06s"><span class="num">02</span><h3>Historial médico por categoría</h3><p>Vacunas, medicamentos, desparasitaciones y controles.</p></li>
+          <li class="feature reveal" style="--rd:.12s"><span class="num">03</span><h3>Recordatorios con repetición</h3><p>Avisos de vencido, de hoy y de mañana.</p></li>
+          <li class="feature reveal" style="--rd:.18s"><span class="num">04</span><h3>Asistente con IA</h3><p>Responde según la especie, la edad, las alergias, la medicación y el historial de cada mascota.</p></li>
+          <li class="feature reveal" style="--rd:.24s"><span class="num">05</span><h3>Logros e insignias</h3><p>Puntos y progreso para sostener el hábito de cuidado.</p></li>
+          <li class="feature reveal" style="--rd:.30s"><span class="num">06</span><h3>Sección Descubrí</h3><p>Artículos y listas de cuidado para guardar.</p></li>
+        </ol>
+
+        <div class="gallery-head reveal">
+          <h3>Pantallas reales, en el celular</h3>
+          <p>Capturas de la app conectada a su base real. Nada retocado: las respuestas de la IA son las que dio en el momento.</p>
+        </div>
+      </div>
+
+      <div class="gallery" tabindex="0" aria-label="Galería de pantallas de VetAr, se desliza hacia los costados">
+        <figure class="shot reveal" style="--rd:0s"><img src="assets/img/cel-11-inicio.webp" alt="Inicio de VetAr con la ficha de Luna y recordatorios" loading="lazy" width="520" height="1125"><figcaption>Inicio</figcaption></figure>
+        <figure class="shot reveal" style="--rd:.06s"><img src="assets/img/cel-13-ficha-de-la-mascota.webp" alt="Ficha de la mascota" loading="lazy" width="520" height="1125"><figcaption>Ficha de la mascota</figcaption></figure>
+        <figure class="shot reveal" style="--rd:.12s"><img src="assets/img/cel-15-historial-clinico.webp" alt="Historial clínico con vacunas y controles" loading="lazy" width="520" height="1125"><figcaption>Historial clínico</figcaption></figure>
+        <figure class="shot reveal" style="--rd:.18s"><img src="assets/img/cel-16-recordatorios.webp" alt="Recordatorios atrasados, de hoy y próximos" loading="lazy" width="520" height="1125"><figcaption>Recordatorios</figcaption></figure>
+        <figure class="shot reveal" style="--rd:.24s"><img src="assets/img/cel-20-chat-ia-conoce-el-historial.webp" alt="Chat con IA que responde con las fechas reales de la mascota" loading="lazy" width="520" height="1125"><figcaption>La IA conoce el historial</figcaption></figure>
+        <figure class="shot reveal" style="--rd:.30s"><img src="assets/img/cel-21-chat-ia-consulta-de-sintoma.webp" alt="Chat con IA ante un síntoma, orienta y deriva al veterinario" loading="lazy" width="520" height="1125"><figcaption>Orienta y deriva al veterinario</figcaption></figure>
+      </div>
+
+      <div class="container">
+        <div class="challenge">
+          <div class="challenge-text reveal">
+            <p class="kicker">El desafío</p>
+            <h3>Integrar la IA sin exponer datos ni claves</h3>
+            <p>La app no habla directo con la IA: pasa por un servidor propio que verifica quién es el usuario, limita cuántas consultas puede hacer y arma solo el contexto de su mascota. Los logros y avisos los otorga la base de datos, no la app, así nadie puede adjudicárselos.</p>
+          </div>
+          <div class="tech">
+            <div class="tech-card reveal" style="--rd:0s"><strong data-count="189">189</strong><p>pruebas automáticas que pasan en cada cambio</p></div>
+            <div class="tech-card reveal" style="--rd:.08s"><strong>1 código</strong><p>para web y Android, hecho en Flutter</p></div>
+            <div class="tech-card reveal" style="--rd:.16s"><strong>IA con tope</strong><p>límite por usuario y global para que el costo no se dispare</p></div>
+            <div class="tech-card reveal" style="--rd:.24s"><strong>Datos privados</strong><p>cada usuario ve solo lo suyo y puede borrar todo desde la app</p></div>
+          </div>
+        </div>
+
+        <div class="vetar-foot reveal">
+          <div>
+            <p class="stack"><span>Flutter</span><span>Supabase</span><span>PostgreSQL con seguridad por usuario</span><span>Inteligencia artificial</span><span>Vercel</span></p>
+            <p class="muted"><strong>Estado:</strong> lista y en revisión en Google Play, a punto de publicarse. ¿Querés recorrerla? Pedime un usuario de prueba con una mascota ya cargada.</p>
+          </div>
+          <a class="btn btn-glow" href="mailto:matias.mingori@hotmail.com?subject=Acceso%20de%20prueba%20a%20VetAr">Pedir acceso de prueba <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- OTROS TRABAJOS -->
+    <section class="work" id="trabajos">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Más trabajos</p>
+          <h2>Proyectos que diseñé y desarrollé de punta a punta</h2>
+        </div>
+
+        <article class="project reveal">
+          <div class="project-media media-gym" aria-hidden="false">
+            <img class="ph p1" src="img/gimnasio-1-clases.png" alt="Turnero para gimnasio: clases del día" loading="lazy" width="860" height="1800">
+            <img class="ph p2" src="img/gimnasio-2-confirmar.png" alt="Turnero para gimnasio: confirmar reserva" loading="lazy" width="860" height="1800">
+            <img class="ph p3" src="img/gimnasio-4-staff.png" alt="Turnero para gimnasio: panel del staff" loading="lazy" width="860" height="1800">
+          </div>
+          <div class="project-body">
+            <div class="tags"><span>Sistema de turnos</span><span>Mobile</span></div>
+            <h3>Turnero para gimnasio</h3>
+            <p>Un sistema simple para que los socios reserven su lugar en cada clase desde el celular y el staff sepa de antemano cuánta gente va a venir.</p>
+            <ul class="checks">
+              <li><strong>Clases de la semana</strong> con horario, profe y lugares libres a la vista.</li>
+              <li><strong>Reserva en dos toques</strong> y cancelación sin llamar al gimnasio.</li>
+              <li><strong>Control de cupos:</strong> cuando una clase se llena, deja de aceptar reservas.</li>
+              <li><strong>Panel del staff</strong> con ocupación del día y lista de asistentes por clase.</li>
+            </ul>
+            <p class="muted small">HTML, CSS y JavaScript, pensado primero para celular. La demo usa datos de ejemplo.</p>
+            <a class="btn btn-dark" href="demos/gimnasio/">Probar la demo <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="project reverse reveal">
+          <div class="project-media media-dental">
+            <img class="sc s1" src="img/odontologia-5-agenda.png" alt="Centro odontológico: agenda del día" loading="lazy" width="2560" height="1640">
+            <img class="sc s2" src="img/odontologia-2-horario.png" alt="Centro odontológico: elegir profesional y horario" loading="lazy" width="2560" height="1640">
+            <img class="sc s3" src="img/odontologia-6-pacientes.png" alt="Centro odontológico: pacientes" loading="lazy" width="2560" height="1640">
+          </div>
+          <div class="project-body">
+            <div class="tags"><span>Sistema de turnos</span><span>Web</span></div>
+            <h3>Centro odontológico</h3>
+            <p>Una plataforma de turnos con dos caras: el paciente reserva online sin llamar, y el centro organiza la agenda de todos sus profesionales en una sola pantalla.</p>
+            <ul class="checks">
+              <li><strong>Reserva en cuatro pasos:</strong> especialidad, profesional y horario, datos y confirmación.</li>
+              <li><strong>Horarios reales:</strong> solo se ofrecen los turnos libres de cada profesional.</li>
+              <li><strong>Agenda del día</strong> por profesional, con estado de cada turno.</li>
+              <li><strong>Pacientes y profesionales:</strong> buscador con cobertura y carga diaria.</li>
+            </ul>
+            <p class="muted small">HTML, CSS y JavaScript, adaptable a celular. La demo usa datos de ejemplo.</p>
+            <a class="btn btn-dark" href="demos/odontologia/">Probar la demo <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="services" id="servicios">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Qué hago</p>
+          <h2>Tres formas de ahorrarle horas a tu negocio</h2>
+        </div>
+        <div class="service-grid">
+          <article class="service reveal" style="--rd:0s">
+            <div class="icon i1" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M10 18h4"/></svg></div>
+            <h3>Aplicaciones y sistemas a medida</h3>
+            <p>Turnos, reservas, fichas de clientes y paneles internos. Herramientas simples de usar que reemplazan planillas, papeles y mensajes sueltos.</p>
+          </article>
+          <article class="service reveal" style="--rd:.1s">
+            <div class="icon i2" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+            <h3>Tableros e indicadores</h3>
+            <p>Tableros en Power BI y reportes que muestran primero lo que hay que decidir: ventas, stock, costos o turnos, con datos ordenados y confiables.</p>
+          </article>
+          <article class="service reveal" style="--rd:.2s">
+            <div class="icon i3" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+            <h3>Automatización de procesos</h3>
+            <p>Tareas repetitivas que pasan a hacerse solas con Make, n8n e inteligencia artificial: avisos, cargas de datos y reportes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO TRABAJO -->
+    <section class="process" id="como-trabajo">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Cómo trabajo</p>
+          <h2>Simple, claro y con fechas que se cumplen</h2>
+        </div>
+        <ol class="steps">
+          <li class="step reveal" style="--rd:0s"><span class="step-n">1</span><h3>Escucho primero</h3><p>Antes de escribir una línea de código entiendo cómo funciona tu negocio y qué necesitás resolver.</p></li>
+          <li class="step reveal" style="--rd:.12s"><span class="step-n">2</span><h3>Avances por etapas</h3><p>Te muestro el progreso en cada paso para que puedas aprobarlo o corregirlo a tiempo.</p></li>
+          <li class="step reveal" style="--rd:.24s"><span class="step-n">3</span><h3>Compromiso con la entrega</h3><p>Cumplo los plazos que acordamos y sigo disponible para ajustes después de entregar.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto">
+      <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span></div>
+      <div class="container contact-inner reveal">
+        <p class="kicker">Contacto</p>
+        <h2>¿Hablamos de tu <em class="grad">proyecto</em>?</h2>
+        <p class="lead">Contame qué necesitás resolver. Lo que hice en VetAr lo puedo adaptar a tu rubro: una app con tus clientes, sus datos, recordatorios y un asistente con IA.</p>
+        <div class="contact-actions">
+          <a class="btn btn-glow" href="mailto:matias.mingori@hotmail.com">Escribime <span aria-hidden="true">→</span></a>
+          <button class="btn btn-ghost" type="button" id="copy-email" data-email="matias.mingori@hotmail.com">Copiar email</button>
+        </div>
+        <p class="contact-meta"><span id="email">matias.mingori@hotmail.com</span> · Saavedra, Buenos Aires</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Matías Mingori</p>
+    <a href="#inicio">Volver arriba ↑</a>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

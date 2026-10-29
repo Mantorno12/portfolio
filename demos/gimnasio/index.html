@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reservas · Gimnasio</title>
+<link href="fonts/fonts.css" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F3F5; --card:#FFFFFF; --ink:#16191D; --ink2:#4B525B; --ink3:#7A818A; --line:#E3E5E9;
+  --dark:#16191D; --accent:#E2571E; --accent-soft:#FCEDE6; --ok:#1E7B4F; --ok-soft:#E3F3EA;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#D9DCE1;font-family:Barlow,system-ui,sans-serif;color:var(--ink);font-size:16px}
+button{font:inherit;cursor:pointer}
+.app{max-width:440px;margin:0 auto;min-height:100vh;background:var(--bg);display:flex;flex-direction:column;position:relative}
+.top{background:var(--dark);color:#fff;padding:18px 20px 20px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.02em}
+.logo{width:34px;height:34px;border-radius:8px;background:var(--accent);display:grid;place-items:center;font-weight:700}
+.top h1{margin:18px 0 4px;font-size:26px;font-weight:700}
+.top p{margin:0;color:#B7BDC6;font-size:15px}
+.days{display:flex;gap:8px;padding:16px 20px 4px;overflow-x:auto}
+.day{flex:0 0 auto;min-width:56px;padding:8px 0;border-radius:12px;border:1px solid var(--line);background:var(--card);text-align:center;color:var(--ink2)}
+.day b{display:block;font-size:20px;color:var(--ink)}
+.day small{font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.day.on{background:var(--dark);border-color:var(--dark);color:#C9CED6}
+.day.on b{color:#fff}
+.filters{display:flex;gap:8px;padding:12px 20px 0;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:14px;color:var(--ink2)}
+.chip.on{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);font-weight:600}
+main{flex:1;padding:16px 20px 100px;display:flex;flex-direction:column;gap:12px}
+.cls{background:var(--card);border-radius:14px;padding:16px;display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;border:1px solid var(--line)}
+.time{font-weight:700;font-size:20px;line-height:1}
+.time small{display:block;font-weight:500;font-size:13px;color:var(--ink3);margin-top:4px}
+.cls h3{margin:0;font-size:18px;font-weight:600}
+.meta{font-size:14px;color:var(--ink3);margin-top:2px}
+.bar{height:5px;background:#ECEEF1;border-radius:9px;margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ink2);border-radius:9px}
+.bar i.full{background:var(--accent)}
+.btn{border:0;border-radius:10px;padding:10px 14px;min-height:44px;font-weight:600;background:var(--dark);color:#fff}
+.btn.ghost{background:transparent;color:var(--ink2);border:1px solid var(--line)}
+.btn.done{background:var(--ok-soft);color:var(--ok)}
+.btn[disabled]{background:#ECEEF1;color:var(--ink3);cursor:not-allowed}
+.btn.big{width:100%;padding:14px;font-size:17px;background:var(--accent)}
+.tabs{position:sticky;bottom:0;display:grid;grid-template-columns:repeat(3,1fr);background:var(--card);border-top:1px solid var(--line)}
+.tab{border:0;background:none;padding:10px 0 12px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:13px;color:var(--ink3);min-height:56px}
+.tab svg{width:22px;height:22px}
+.tab.on{color:var(--accent);font-weight:600}
+.sheet-bg{position:fixed;inset:0;background:rgba(10,12,15,.45);display:flex;align-items:flex-end;justify-content:center;z-index:10}
+.sheet{width:100%;max-width:440px;background:var(--card);border-radius:20px 20px 0 0;padding:22px 20px 26px;display:flex;flex-direction:column;gap:14px}
+.sheet h2{margin:0;font-size:22px}
+.row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.row span{color:var(--ink3)}
+.empty{text-align:center;color:var(--ink3);padding:48px 12px}
+.section-t{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);font-weight:600;margin:6px 0 0}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--dark);color:#fff;padding:12px 18px;border-radius:12px;font-size:15px;z-index:20;white-space:nowrap}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.kpi b{display:block;font-size:24px}
+.kpi span{font-size:13px;color:var(--ink3)}
+.att{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.att span{font-size:13px;background:#F2F3F5;border-radius:6px;padding:3px 8px;color:var(--ink2)}
+.staff-cls{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.staff-cls header{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<script>
+const BRAND = 'Gimnasio';
+const CLASSES = [
+  {id:'fun', name:'Funcional', coach:'Lucía', room:'Sala 1', mins:50, cap:16, cat:'Clases'},
+  {id:'spi', name:'Spinning', coach:'Martín', room:'Sala bikes', mins:45, cap:20, cat:'Clases'},
+  {id:'cro', name:'Cross training', coach:'Diego', room:'Box', mins:60, cap:14, cat:'Clases'},
+  {id:'yog', name:'Yoga', coach:'Valentina', room:'Sala 2', mins:60, cap:12, cat:'Clases'},
+  {id:'pil', name:'Pilates mat', coach:'Sofía', room:'Sala 2', mins:50, cap:12, cat:'Clases'},
+  {id:'mus', name:'Musculación', coach:'Staff de sala', room:'Sala de musculación', mins:60, cap:30, cat:'Sala'}
+];
+const WEEK = { // weekday (1=lun) -> [time, classId]
+  1:[['07:00','fun'],['08:00','mus'],['09:00','pil'],['12:30','fun'],['18:00','cro'],['19:00','spi'],['20:00','mus']],
+  2:[['07:00','spi'],['08:00','mus'],['10:00','yog'],['18:00','fun'],['19:00','cro'],['20:00','mus']],
+  3:[['07:00','fun'],['08:00','mus'],['09:00','pil'],['12:30','spi'],['18:00','cro'],['19:00','yog'],['20:00','mus']],
+  4:[['07:00','spi'],['08:00','mus'],['10:00','yog'],['18:00','fun'],['19:00','spi'],['20:00','mus']],
+  5:[['07:00','fun'],['08:00','mus'],['09:00','pil'],['18:00','cro'],['19:00','fun']],
+  6:[['09:00','fun'],['10:00','spi'],['11:00','yog']]
+};
+const NAMES = ['Agustina R.','Bruno P.','Camila F.','Damián L.','Eugenia M.','Facundo S.','Gisela T.','Hernán V.','Ivana C.','Joaquín D.','Karina B.','Leandro G.','Micaela N.','Nicolás A.','Paula O.','Ramiro Q.','Romina H.','Santiago E.','Tamara I.','Ulises K.','Victoria J.','Walter Z.'];
+const DAYN = ['dom','lun','mar','mié','jue','vie','sáb'];
+const DAYL = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+
+function load(){ try { return JSON.parse(localStorage.getItem('gym-res')||'[]'); } catch(e){ return []; } }
+function save(){ try { localStorage.setItem('gym-res', JSON.stringify(state.mine)); } catch(e){} }
+function seed(str){ let h=0; for(const c of str) h=(h*31+c.charCodeAt(0))>>>0; return h; }
+function iso(d){ return d.toISOString().slice(0,10); }
+
+const today = new Date(); today.setHours(12,0,0,0);
+const days = [];
+for(let i=0;days.length<7;i++){ const d=new Date(today); d.setDate(today.getDate()+i); if(d.getDay()!==0) days.push(d); }
+
+const state = { tab:'clases', day:0, filter:'Todas', mine:load(), sheet:null, toast:'' };
+
+function slots(d){
+  return (WEEK[d.getDay()]||[]).map(([t,id])=>{
+    const c = CLASSES.find(x=>x.id===id);
+    const key = iso(d)+'_'+t+'_'+id;
+    const base = seed(key)%(c.cap+1);
+    const isPast = iso(d)===iso(today) && t < new Date().toTimeString().slice(0,5);
+    const mine = state.mine.includes(key);
+    const taken = Math.min(c.cap, Math.max(2, base) + (mine?1:0));
+    return {...c, t, key, taken, mine, full: taken>=c.cap && !mine, past:isPast, date:d};
+  });
+}
+function set(p){ Object.assign(state,p); render(); }
+function toast(msg){ set({toast:msg}); setTimeout(()=>set({toast:''}),2200); }
+
+function icon(n){
+  const p = {
+    cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+    list:'<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>',
+    chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>'
+  }[n];
+  return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
+}
+
+function clsCard(s){
+  const pct = Math.round(s.taken/s.cap*100);
+  const left = s.cap - s.taken;
+  let btn;
+  if(s.mine) btn = '<button class="btn done" data-open="'+s.key+'">Reservado</button>';
+  else if(s.past) btn = '<button class="btn" disabled>Finalizó</button>';
+  else if(s.full) btn = '<button class="btn" disabled>Completo</button>';
+  else btn = '<button class="btn" data-open="'+s.key+'">Reservar</button>';
+  return '<article class="cls"><div class="time">'+s.t+'<small>'+s.mins+' min</small></div>'+
+    '<div><h3>'+s.name+'</h3><div class="meta">'+s.coach+' · '+(s.full?'Sin lugares':left+' lugares libres')+'</div>'+
+    '<div class="bar"><i class="'+(pct>=85?'full':'')+'" style="width:'+pct+'%"></i></div></div>'+btn+'</article>';
+}
+
+function viewClases(){
+  const d = days[state.day];
+  const list = slots(d).filter(s=>state.filter==='Todas'||s.cat===state.filter);
+  return '<div class="days">'+days.map((x,i)=>'<button class="day'+(i===state.day?' on':'')+'" data-day="'+i+'"><small>'+DAYN[x.getDay()]+'</small><b>'+x.getDate()+'</b></button>').join('')+'</div>'+
+    '<div class="filters">'+['Todas','Clases','Sala'].map(f=>'<button class="chip'+(f===state.filter?' on':'')+'" data-filter="'+f+'">'+(f==='Sala'?'Sala de musculación':f)+'</button>').join('')+'</div>'+
+    '<main>'+(list.length?list.map(clsCard).join(''):'<div class="empty">No hay clases para este día.</div>')+'</main>';
+}
+
+function viewMine(){
+  const all = days.flatMap(slots).filter(s=>s.mine);
+  if(!all.length) return '<main><div class="empty"><b style="display:block;color:#16191D;font-size:18px;margin-bottom:6px">Todavía no tenés turnos</b>Reservá una clase desde la pestaña Clases.</div></main>';
+  return '<main><p class="section-t">Próximos turnos</p>'+all.map(s=>
+    '<article class="cls"><div class="time">'+s.t+'<small>'+DAYN[s.date.getDay()]+' '+s.date.getDate()+'</small></div><div><h3>'+s.name+'</h3><div class="meta">'+s.coach+' · '+s.room+'</div></div><button class="btn ghost" data-cancel="'+s.key+'">Cancelar</button></article>'
+  ).join('')+'</main>';
+}
+
+function viewStaff(){
+  const d = days[state.day];
+  const list = slots(d);
+  const tot = list.reduce((a,s)=>a+s.taken,0), cap = list.reduce((a,s)=>a+s.cap,0);
+  return '<div class="days">'+days.map((x,i)=>'<button class="day'+(i===state.day?' on':'')+'" data-day="'+i+'"><small>'+DAYN[x.getDay()]+'</small><b>'+x.getDate()+'</b></button>').join('')+'</div>'+
+  '<main><div class="kpis"><div class="kpi"><b>'+list.length+'</b><span>Clases</span></div><div class="kpi"><b>'+tot+'</b><span>Reservas</span></div><div class="kpi"><b>'+(cap?Math.round(tot/cap*100):0)+'%</b><span>Ocupación</span></div></div>'+
+  list.map(s=>{
+    const n = seed(s.key);
+    const ppl = Array.from({length:Math.min(s.taken,8)},(_,i)=>NAMES[(n+i*7)%NAMES.length]);
+    if(s.mine) ppl[0]='Vos';
+    return '<div class="staff-cls"><header><div><b style="font-size:17px">'+s.t+' · '+s.name+'</b><div class="meta">'+s.coach+' · '+s.room+'</div></div><b>'+s.taken+'/'+s.cap+'</b></header>'+
+      '<div class="bar"><i class="'+(s.taken/s.cap>=.85?'full':'')+'" style="width:'+Math.round(s.taken/s.cap*100)+'%"></i></div>'+
+      '<div class="att">'+ppl.map(p=>'<span>'+p+'</span>').join('')+(s.taken>8?'<span>+'+(s.taken-8)+' más</span>':'')+'</div></div>';
+  }).join('')+'</main>';
+}
+
+function sheet(){
+  const s = days.flatMap(slots).find(x=>x.key===state.sheet);
+  if(!s) return '';
+  return '<div class="sheet-bg" data-close="1"><div class="sheet" role="dialog" aria-label="Confirmar reserva">'+
+    '<h2>'+(s.mine?'Tu reserva':'Confirmar reserva')+'</h2>'+
+    '<div><div class="row"><span>Clase</span><b>'+s.name+'</b></div><div class="row"><span>Día</span><b>'+DAYL[s.date.getDay()]+' '+s.date.getDate()+'</b></div><div class="row"><span>Horario</span><b>'+s.t+' · '+s.mins+' min</b></div><div class="row"><span>Profe</span><b>'+s.coach+'</b></div><div class="row"><span>Lugar</span><b>'+s.room+'</b></div></div>'+
+    (s.mine?'<button class="btn big" style="background:#16191D" data-cancel="'+s.key+'">Cancelar reserva</button>':'<p style="margin:0;font-size:14px;color:#7A818A">Podés cancelar sin cargo hasta 2 horas antes.</p><button class="btn big" data-book="'+s.key+'">Confirmar</button>')+
+    '<button class="btn ghost" data-close="1">Volver</button></div></div>';
+}
+
+function render(){
+  const titles = {clases:['Reservá tu clase','Elegí el día y el horario.'], mine:['Mis turnos','Tus reservas de esta semana.'], staff:['Panel del staff','Ocupación y asistentes por clase.']};
+  const [h,p] = titles[state.tab];
+  document.getElementById('app').innerHTML =
+    '<div class="top"><div class="brand"><div class="logo">G</div>'+BRAND+'</div><h1>'+h+'</h1><p>'+p+'</p></div>'+
+    (state.tab==='clases'?viewClases():state.tab==='mine'?viewMine():viewStaff())+
+    '<nav class="tabs">'+[['clases','Clases','cal'],['mine','Mis turnos','list'],['staff','Staff','chart']].map(([k,l,i])=>'<button class="tab'+(state.tab===k?' on':'')+'" data-tab="'+k+'">'+icon(i)+l+'</button>').join('')+'</nav>'+
+    (state.sheet?sheet():'')+(state.toast?'<div class="toast" role="status">'+state.toast+'</div>':'');
+}
+
+document.addEventListener('click', e=>{
+  const t = e.target.closest('[data-day],[data-filter],[data-tab],[data-open],[data-book],[data-cancel],[data-close]');
+  if(!t) return;
+  if(t.dataset.close && e.target!==t && !e.target.closest('button')) return;
+  if(t.dataset.day) set({day:+t.dataset.day});
+  else if(t.dataset.filter) set({filter:t.dataset.filter});
+  else if(t.dataset.tab) set({tab:t.dataset.tab});
+  else if(t.dataset.open) set({sheet:t.dataset.open});
+  else if(t.dataset.book){ state.mine.push(t.dataset.book); save(); state.sheet=null; toast('Listo, tu lugar está reservado'); }
+  else if(t.dataset.cancel){ state.mine=state.mine.filter(k=>k!==t.dataset.cancel); save(); state.sheet=null; toast('Reserva cancelada'); }
+  else if(t.dataset.close) set({sheet:null});
+});
+render();
+</script>
+</body>
+</html>
