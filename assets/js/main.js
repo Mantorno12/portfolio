@@ -147,20 +147,6 @@
     });
   }
 
-  /* El teléfono del inicio sigue un poco al mouse */
-  var visual = document.querySelector('.hero-visual');
-  if (visual && !reduceMotion && window.matchMedia('(pointer: fine)').matches) {
-    var hero = document.querySelector('.hero');
-    hero.addEventListener('mousemove', function (e) {
-      var r = hero.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - 0.5;
-      var y = (e.clientY - r.top) / r.height - 0.5;
-      visual.style.transform = 'perspective(1000px) rotateY(' + (x * 10).toFixed(2) + 'deg) rotateX(' + (-y * 8).toFixed(2) + 'deg)';
-    });
-    hero.addEventListener('mouseleave', function () { visual.style.transform = ''; });
-    visual.style.transition = 'transform .6s cubic-bezier(.2,.8,.2,1)';
-  }
-
   /* Copiar email */
   var copyBtn = document.getElementById('copy-email');
   if (copyBtn) {
