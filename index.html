@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Matías Mingori · Apps, tableros y automatización</title>
-  <meta name="description" content="Portfolio de Matías Mingori: apps a medida, tableros y automatizaciones con IA. Proyecto destacado: VetAr, asistente veterinario con inteligencia artificial.">
+  <meta name="description" content="Portfolio de Matías Mingori: apps a medida, tableros y automatizaciones con IA. Proyectos destacados: VetAr, salud de mascotas con IA, y Nidalia, bienestar emocional para chicos, familias y terapeutas.">
   <meta name="theme-color" content="#0b1a2e">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Matías Mingori · Apps, tableros y automatización">
@@ -28,6 +28,7 @@
     <nav class="nav-links" aria-label="Secciones">
       <a href="#servicios">Qué hago</a>
       <a href="#vetar">VetAr</a>
+      <a href="#nidalia">Nidalia</a>
       <a href="#trabajos">Más trabajos</a>
       <a href="#como-trabajo">Cómo trabajo</a>
     </nav>
@@ -37,24 +38,29 @@
   <main>
     <!-- INICIO -->
     <section class="hero" id="inicio">
-      <div class="hero-bg" aria-hidden="true"><div class="grid-lines"></div></div>
+      <div class="hero-bg" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span><div class="grid-lines"></div></div>
 
       <div class="hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow fade" style="--d:0">Apps a medida · Tableros · Automatización</p>
-          <h1 class="hero-title fade" style="--d:1">Diseño y desarrollo herramientas para que un negocio funcione mejor y decida con datos.</h1>
-          <p class="hero-sub fade" style="--d:2">Durante más de seis años medí operaciones de logística, e‑commerce y auditoría: armé tableros, seguí indicadores y encontré dónde se perdía tiempo y dinero. Hoy uso esa mirada para diseñar aplicaciones, tableros y automatizaciones pensadas desde cómo trabaja cada negocio.</p>
-          <div class="hero-cta fade" style="--d:3">
+          <p class="eyebrow drop" style="--d:0"><span class="pulse"></span> Apps a medida · Tableros · Automatización</p>
+          <h1 class="hero-title" aria-label="Diseño y desarrollo herramientas para que un negocio funcione mejor y decida con datos."><span aria-hidden="true"><span class="word drop" style="--d:1">Diseño</span> <span class="word drop" style="--d:2">y</span> <span class="word drop" style="--d:3">desarrollo</span> <span class="word drop" style="--d:4">herramientas</span> <span class="word drop" style="--d:5">para</span> <span class="word drop" style="--d:6">que</span> <span class="word drop" style="--d:7">un</span> <span class="word drop" style="--d:8">negocio</span> <span class="word drop" style="--d:9">funcione</span> <span class="word drop" style="--d:10">mejor</span> <span class="word drop" style="--d:11">y</span> <span class="word drop" style="--d:12">decida</span> <span class="word drop" style="--d:13">con</span> <span class="word drop" style="--d:14">datos.</span></span></h1>
+          <p class="hero-sub drop" style="--d:15">Durante más de seis años medí operaciones de logística, e‑commerce y auditoría: armé tableros, seguí indicadores y encontré dónde se perdía tiempo y dinero. Hoy uso esa mirada para diseñar aplicaciones, tableros y automatizaciones pensadas desde cómo trabaja cada negocio.</p>
+          <div class="hero-cta drop" style="--d:16">
             <a class="btn btn-primary" href="#vetar">Ver mis trabajos <span aria-hidden="true">→</span></a>
             <a class="btn btn-ghost" href="#contacto">Contactarme</a>
           </div>
         </div>
 
-        <aside class="hero-index fade" style="--d:2" aria-label="Trabajos que vas a ver en esta página">
+        <aside class="hero-index drop-side" style="--d:6" aria-label="Trabajos que vas a ver en esta página">
           <p class="index-title">En esta página</p>
           <a class="index-item" href="#vetar">
             <span class="index-thumb thumb-vetar"><img src="img/vetar-logo-blanco.png" alt="" width="30" height="30"></span>
             <span class="index-text"><strong>VetAr</strong><span>App de salud para mascotas con asistente de IA. Web y Android.</span></span>
+            <span class="index-tag">Destacado</span>
+          </a>
+          <a class="index-item" href="#nidalia">
+            <span class="index-thumb thumb-nidalia"><img src="assets/img/nidalia/cel-1-inicio.webp" alt="" width="56" height="56"></span>
+            <span class="index-text"><strong>Nidalia</strong><span>Bienestar emocional para chicos, familias y terapeutas. Web y Android.</span></span>
             <span class="index-tag">Destacado</span>
           </a>
           <a class="index-item" href="#gimnasio">
@@ -76,10 +82,10 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="kicker">Qué hago</p>
-          <h2>Tres formas de ahorrarle horas a tu negocio</h2>
+          <h2 data-split>Tres formas de ahorrarle horas a tu negocio</h2>
           <p class="lead">Lo que ofrezco, y más abajo los trabajos que lo muestran funcionando.</p>
         </div>
-        <div class="service-grid">
+        <div class="service-grid" data-stagger>
           <article class="service reveal" style="--rd:0s">
             <div class="icon i1" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M10 18h4"/></svg></div>
             <h3>Aplicaciones y sistemas a medida</h3>
@@ -116,13 +122,13 @@
         <div class="vetar-head">
           <div class="reveal">
             <p class="kicker"><img src="img/vetar-logo-blanco.png" alt="" width="28" height="28"> Proyecto destacado</p>
-            <h2 class="vetar-title">Vet<span>Ar</span></h2>
+            <h2 class="vetar-title rise"><span class="rise-i">Vet<span>Ar</span></span></h2>
           </div>
           <p class="lead reveal" style="--rd:.1s">Una app de salud para mascotas, con asistente de IA, para dueños de perros y gatos en Argentina que quieren tener vacunas, controles y medicación en un solo lugar, sin planillas ni papeles sueltos. La diseñé y la desarrollé completa, para web y Android.</p>
         </div>
 
         <div class="vetar-intro">
-          <div class="vetar-phone reveal">
+          <div class="vetar-phone reveal" data-parallax="-0.06">
             <div class="phone">
               <video class="lazy-video" muted loop playsinline preload="none" poster="assets/video/vetar-celular.jpg" aria-label="Recorrido por VetAr en el celular">
                 <source data-src="assets/video/vetar-celular.mp4" type="video/mp4">
@@ -133,7 +139,7 @@
           </div>
           <div class="vetar-what">
             <h3 class="sub-title reveal">Qué hace</h3>
-            <ol class="features">
+            <ol class="features" data-stagger>
               <li class="feature reveal" style="--rd:0s"><h3>Ficha de la mascota</h3><p>Foto, datos de salud y un puntaje de perfil completo.</p></li>
               <li class="feature reveal" style="--rd:.06s"><h3>Historial médico por categoría</h3><p>Vacunas, medicamentos, desparasitaciones y controles.</p></li>
               <li class="feature reveal" style="--rd:.12s"><h3>Recordatorios con repetición</h3><p>Avisos de vencido, de hoy y de mañana.</p></li>
@@ -189,7 +195,7 @@
             <h3>Integrar la IA sin exponer datos ni claves</h3>
             <p>La app no habla directo con la IA: pasa por un servidor propio que verifica quién es el usuario, limita cuántas consultas puede hacer y arma solo el contexto de su mascota. Los logros y avisos los otorga la base de datos, no la app, así nadie puede adjudicárselos.</p>
           </div>
-          <div class="tech">
+          <div class="tech" data-stagger>
             <div class="tech-card reveal" style="--rd:0s"><strong data-count="189">189</strong><p>pruebas automáticas que pasan en cada cambio</p></div>
             <div class="tech-card reveal" style="--rd:.08s"><strong>1 código</strong><p>para web y Android, hecho en Flutter</p></div>
             <div class="tech-card reveal" style="--rd:.16s"><strong>IA con tope</strong><p>límite por usuario y global para que el costo no se dispare</p></div>
@@ -207,17 +213,140 @@
       </div>
     </section>
 
+    <!-- NIDALIA DESTACADO -->
+    <section class="nidalia" id="nidalia">
+      <div class="nidalia-bg" aria-hidden="true"><span class="orb o3"></span></div>
+      <div class="container">
+        <div class="vetar-head nidalia-head">
+          <div class="reveal">
+            <p class="kicker"><span class="nid-mark" aria-hidden="true">N</span> Proyecto destacado</p>
+            <h2 class="vetar-title rise"><span class="rise-i">Nid<span>alia</span></span></h2>
+          </div>
+          <p class="lead reveal" style="--rd:.1s">Una app de bienestar emocional para chicos de 3 a 18 años, sus familias y sus terapeutas. Cuentos interactivos, juegos, ejercicios de calma y rutinas para casa, y un espacio de trabajo para psicólogos y centros de salud mental. La diseñé y la desarrollé completa, para web y Android.</p>
+        </div>
+
+        <div class="nidalia-intro">
+          <div class="nidalia-who">
+            <h3 class="sub-title reveal">Una app, cuatro maneras de usarla</h3>
+            <div class="who-grid" data-stagger>
+              <article class="who reveal">
+                <span class="who-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c1-4 4-6 7-6s6 2 7 6"/></svg></span>
+                <h4>Chicos</h4>
+                <p>Cuentos, juegos, calma y rutinas según su edad, en cuatro etapas: de 3 a 5, 6 a 9, 10 a 13 y 14 a 18 años.</p>
+              </article>
+              <article class="who reveal">
+                <span class="who-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg></span>
+                <h4>Familias</h4>
+                <p>Cómo se sintió cada chico en la semana, tiempo de uso con límite diario y preguntas para conversar en casa.</p>
+              </article>
+              <article class="who reveal">
+                <span class="who-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+                <h4>Profesionales</h4>
+                <p>Fichas de pacientes, objetivos y registros, misiones para la casa, biblioteca de técnicas y red de derivación.</p>
+              </article>
+              <article class="who reveal">
+                <span class="who-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M10 21v-5h4v5"/></svg></span>
+                <h4>Centros</h4>
+                <p>Todo el equipo bajo una misma licencia, la actividad del centro en números y marca propia.</p>
+              </article>
+            </div>
+          </div>
+          <div class="vetar-phone nidalia-phone reveal" data-parallax="-0.06">
+            <div class="phone phone-light">
+              <video class="lazy-video" muted loop playsinline preload="none" poster="assets/video/nidalia-celular.jpg" aria-label="Recorrido por Nidalia en el celular: inicio, un cuento y un ejercicio de respiración">
+                <source data-src="assets/video/nidalia-celular.mp4" type="video/mp4">
+                <source data-src="assets/video/nidalia-celular.webm" type="video/webm">
+              </video>
+            </div>
+            <p class="caption">Recorrido real por la app en el celular</p>
+          </div>
+        </div>
+
+        <ul class="numbers" data-stagger aria-label="Contenido de la app">
+          <li class="reveal"><strong data-count="30">30</strong><span>cuentos interactivos</span></li>
+          <li class="reveal"><strong data-count="15">15</strong><span>episodios sobre emociones</span></li>
+          <li class="reveal"><strong data-count="13">13</strong><span>juegos y talleres</span></li>
+          <li class="reveal"><strong data-count="11">11</strong><span>ejercicios de calma</span></li>
+          <li class="reveal"><strong data-count="5">5</strong><span>rutinas de 21 días</span></li>
+          <li class="reveal"><strong data-count="8">8</strong><span>personajes propios</span></li>
+        </ul>
+
+        <div class="browser-head reveal">
+          <h3 class="sub-title">El lado de los adultos</h3>
+          <p>Paneles para el profesional, la familia y el centro, en la compu.</p>
+        </div>
+        <div class="browser browser-light reveal-zoom">
+          <div class="browser-bar">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="url">Nidalia · versión web</span>
+            <div class="tabs" role="tablist" aria-label="Elegir pantalla">
+              <button class="tab img-tab is-active" role="tab" aria-selected="true" data-img="0">Profesional</button>
+              <button class="tab img-tab" role="tab" aria-selected="false" data-img="1">Pacientes</button>
+              <button class="tab img-tab" role="tab" aria-selected="false" data-img="2">Familia</button>
+              <button class="tab img-tab" role="tab" aria-selected="false" data-img="3">Centro</button>
+            </div>
+          </div>
+          <div class="browser-screen browser-slides">
+            <img class="slide is-active" src="assets/img/nidalia/esc-profesional.webp" alt="Inicio del profesional: pacientes en proceso, encuentros, misiones y derivaciones" loading="lazy" width="1600" height="1000">
+            <img class="slide" src="assets/img/nidalia/esc-pacientes.webp" alt="Fichas de pacientes con motivo de consulta y estado" loading="lazy" width="1600" height="1000">
+            <img class="slide" src="assets/img/nidalia/esc-familia.webp" alt="Panel de la familia con emociones de la semana y tiempo de uso" loading="lazy" width="1600" height="1000">
+            <img class="slide" src="assets/img/nidalia/esc-centro.webp" alt="Panel del centro con la actividad de cada profesional" loading="lazy" width="1600" height="1000">
+            <span class="live-badge"><span class="pulse"></span> Cuentas de ejemplo, datos ficticios</span>
+          </div>
+        </div>
+
+        <div class="gallery-head reveal">
+          <h3>El nido de los chicos, en el celular</h3>
+          <p>Así lo ve Sofi, de 7 años: elige cómo se siente, lee un cuento, juega y hace la misión que le dejó su psicóloga.</p>
+        </div>
+      </div>
+
+      <div class="gallery gallery-light" tabindex="0" aria-label="Galería de pantallas de Nidalia, se desliza hacia los costados">
+        <figure class="shot reveal" style="--rd:0s"><img src="assets/img/nidalia/cel-1-inicio.webp" alt="Inicio del nido: ¿cómo te sentís hoy?" loading="lazy" width="520" height="1126"><figcaption>¿Cómo te sentís hoy?</figcaption></figure>
+        <figure class="shot reveal" style="--rd:.06s"><img src="assets/img/nidalia/cel-2-cuentos.webp" alt="Lista de cuentos ilustrados" loading="lazy" width="520" height="1126"><figcaption>Cuentos</figcaption></figure>
+        <figure class="shot reveal" style="--rd:.12s"><img src="assets/img/nidalia/cel-3-cuento.webp" alt="Página de un cuento interactivo" loading="lazy" width="520" height="1126"><figcaption>Un cuento por dentro</figcaption></figure>
+        <figure class="shot reveal" style="--rd:.18s"><img src="assets/img/nidalia/cel-4-juegos.webp" alt="Juegos y talleres" loading="lazy" width="520" height="1126"><figcaption>Juegos</figcaption></figure>
+        <figure class="shot reveal" style="--rd:.24s"><img src="assets/img/nidalia/cel-5-calma.webp" alt="Ejercicio de respiración guiada" loading="lazy" width="520" height="1126"><figcaption>Respiración guiada</figcaption></figure>
+        <figure class="shot reveal" style="--rd:.30s"><img src="assets/img/nidalia/cel-7-emociones.webp" alt="Panel de la familia: emociones y tiempo de uso" loading="lazy" width="520" height="1126"><figcaption>Panel de la familia</figcaption></figure>
+        <figure class="shot reveal" style="--rd:.36s"><img src="assets/img/nidalia/cel-8-profesional.webp" alt="Espacio del profesional en el celular" loading="lazy" width="520" height="1126"><figcaption>Espacio profesional</figcaption></figure>
+      </div>
+
+      <div class="container">
+        <div class="challenge">
+          <div class="challenge-text reveal">
+            <p class="kicker">El desafío</p>
+            <h3>Cuidar los datos de chicos con cuatro tipos de usuario</h3>
+            <p>Cada cuenta ve solo lo suyo, y esas reglas viven en la base de datos, no en la app. El profesional ve lo que la familia elige compartir con un código de vínculo, y el centro ve la actividad del equipo en números, nunca fichas ni notas. Los planes se cobran con Mercado Pago, con prueba gratis y botones de baja y de arrepentimiento como pide la ley.</p>
+          </div>
+          <div class="tech" data-stagger>
+            <div class="tech-card reveal"><strong>4 perfiles</strong><p>chicos, familias, profesionales y centros en una misma app</p></div>
+            <div class="tech-card reveal"><strong>Cobros</strong><p>suscripciones mensuales con Mercado Pago y prueba gratis</p></div>
+            <div class="tech-card reveal"><strong>Datos privados</strong><p>seguridad por usuario en la base: el centro ve solo cantidades</p></div>
+            <div class="tech-card reveal"><strong>Sin publicidad</strong><p>pensada para chicos, con límite de tiempo diario</p></div>
+          </div>
+        </div>
+
+        <div class="vetar-foot reveal">
+          <div>
+            <p class="stack"><span>React</span><span>Supabase</span><span>PostgreSQL con seguridad por usuario</span><span>Mercado Pago</span><span>Netlify</span></p>
+            <p class="muted"><strong>Estado:</strong> lista y en revisión en Google Play, a punto de publicarse. ¿Querés recorrerla? Pedime un usuario de prueba.</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:matias.mingori@hotmail.com?subject=Acceso%20de%20prueba%20a%20Nidalia">Pedir acceso de prueba <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
     <!-- OTROS TRABAJOS -->
     <section class="work" id="trabajos">
       <div class="container">
         <div class="section-head reveal">
           <p class="kicker">Más trabajos</p>
-          <h2>Proyectos que diseñé y desarrollé de punta a punta</h2>
+          <h2 data-split>Proyectos que diseñé y desarrollé de punta a punta</h2>
           <p class="lead">Dos sistemas de turnos para rubros distintos. Las demos se pueden probar en el navegador.</p>
         </div>
 
         <article class="project reveal" id="gimnasio">
-          <div class="project-media media-gym" aria-hidden="false">
+          <div class="project-media media-gym reveal-clip">
             <img class="ph p1" src="img/gimnasio-1-clases.png" alt="Turnero para gimnasio: clases del día" loading="lazy" width="860" height="1800">
             <img class="ph p2" src="img/gimnasio-2-confirmar.png" alt="Turnero para gimnasio: confirmar reserva" loading="lazy" width="860" height="1800">
             <img class="ph p3" src="img/gimnasio-4-staff.png" alt="Turnero para gimnasio: panel del staff" loading="lazy" width="860" height="1800">
@@ -238,7 +367,7 @@
         </article>
 
         <article class="project reverse reveal" id="odontologia">
-          <div class="project-media media-dental">
+          <div class="project-media media-dental reveal-clip">
             <img class="sc s1" src="img/odontologia-5-agenda.png" alt="Centro odontológico: agenda del día" loading="lazy" width="2560" height="1640">
             <img class="sc s2" src="img/odontologia-2-horario.png" alt="Centro odontológico: elegir profesional y horario" loading="lazy" width="2560" height="1640">
             <img class="sc s3" src="img/odontologia-6-pacientes.png" alt="Centro odontológico: pacientes" loading="lazy" width="2560" height="1640">
@@ -265,7 +394,7 @@
       <div class="container">
         <div class="section-head reveal">
           <p class="kicker">Cómo trabajo</p>
-          <h2>Simple, claro y con fechas que se cumplen</h2>
+          <h2 data-split>Simple, claro y con fechas que se cumplen</h2>
         </div>
         <ol class="steps">
           <li class="step reveal" style="--rd:0s"><span class="step-n">1</span><h3>Escucho primero</h3><p>Antes de escribir una línea de código entiendo cómo funciona tu negocio y qué necesitás resolver.</p></li>
@@ -279,8 +408,8 @@
     <section class="contact" id="contacto">
             <div class="container contact-inner reveal">
         <p class="kicker">Contacto</p>
-        <h2>¿Hablamos de tu proyecto?</h2>
-        <p class="lead">Contame qué necesitás resolver. Lo que hice en VetAr lo puedo adaptar a tu rubro: una app con tus clientes, sus datos, recordatorios y un asistente con IA.</p>
+        <h2 data-split>¿Hablamos de tu proyecto?</h2>
+        <p class="lead">Contame qué necesitás resolver. Lo que hice en VetAr y en Nidalia lo puedo adaptar a tu rubro: una app con tus clientes, sus datos, recordatorios, cobros y un asistente con IA.</p>
         <div class="contact-actions">
           <a class="btn btn-primary" href="mailto:matias.mingori@hotmail.com">Escribime <span aria-hidden="true">→</span></a>
           <button class="btn btn-ghost" type="button" id="copy-email" data-email="matias.mingori@hotmail.com">Copiar email</button>
