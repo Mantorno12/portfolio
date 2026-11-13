@@ -532,3 +532,20 @@ html:not(.js) .reveal-zoom { opacity: 1; transform: none; }
   .js .reveal-clip { clip-path: none; }
   .marquee-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
 }
+
+/* ---------- Sello Mingori Studio ---------- */
+.studio-tag {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 18px;
+  padding: 6px 14px 6px 6px; border-radius: 999px;
+  font-size: 14px; color: var(--ink-2);
+  background: var(--surface); border: 1px solid var(--line);
+}
+.studio-tag img { border-radius: 7px; }
+.studio-tag strong { font-weight: 700; color: var(--ink); }
+.vetar .studio-tag { color: var(--on-night-2); background: rgba(255,255,255,.05); border-color: var(--night-line); }
+.vetar .studio-tag strong { color: var(--on-night); }
+.vetar .studio-tag img { box-shadow: 0 0 0 1px rgba(255,255,255,.14); }
+.footer-studio { white-space: nowrap; }
+.footer-studio img { display: inline-block; vertical-align: -4px; margin: 0 2px 0 4px; border-radius: 5px; box-shadow: 0 0 0 1px rgba(255,255,255,.14); }
+.footer-studio strong { font-weight: 600; color: var(--on-night-2); }
+@media (max-width: 600px) { .footer-studio { display: block; margin-top: 6px; white-space: normal; } .footer-studio .sep { display: none; } }
