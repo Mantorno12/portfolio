@@ -169,6 +169,7 @@ ol, ul { margin: 0; padding: 0; list-style: none; }
 .hero-index .index-item:nth-of-type(2) { animation-delay: 1.18s; }
 .hero-index .index-item:nth-of-type(3) { animation-delay: 1.31s; }
 .hero-index .index-item:nth-of-type(4) { animation-delay: 1.44s; }
+.hero-index .index-item:nth-of-type(5) { animation-delay: 1.57s; }
 
 /* Luces suaves de fondo que se mueven lento */
 .orb { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; will-change: transform; }
@@ -466,6 +467,8 @@ html:not(.js) .reveal-zoom { opacity: 1; transform: none; }
 .js .reveal.in { filter: none; }
 [data-parallax] { will-change: transform; }
 .thumb-nidalia { background: #1e2f5c; }
+.thumb-calcagno { background: #1672ad; }
+.thumb-calcagno img { width: 26px; height: 26px; object-fit: contain; }
 .thumb-nidalia img { object-position: 50% 12%; }
 
 /* ---------- Nidalia ---------- */
@@ -549,3 +552,30 @@ html:not(.js) .reveal-zoom { opacity: 1; transform: none; }
 .footer-studio img { display: inline-block; vertical-align: -4px; margin: 0 2px 0 4px; border-radius: 5px; box-shadow: 0 0 0 1px rgba(255,255,255,.14); }
 .footer-studio strong { font-weight: 600; color: var(--on-night-2); }
 @media (max-width: 600px) { .footer-studio { display: block; margin-top: 6px; white-space: normal; } .footer-studio .sep { display: none; } }
+
+/* ---------- Calcagno Seguros (sitio web para un cliente) ----------
+   Usa la base oscura de .vetar; acá solo lo propio: el azul de la marca del cliente,
+   la galería de imágenes 4:5 y las tarjetas del kit. */
+.calcagno { background: linear-gradient(180deg, var(--night) 0%, #0d2240 55%, var(--night) 100%); border-top: 1px solid var(--night-line); }
+.calcagno-glow { background: radial-gradient(closest-side, rgba(22,114,173,.34), transparent); }
+.cal-mark { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: #1672ad; }
+.cal-mark img { width: 15px; height: 15px; }
+.calcagno .vetar-title { line-height: .98; }
+.client-tag { padding: 6px 14px; }
+.cal-dot { width: 8px; height: 8px; border-radius: 50%; background: #4fa38f; box-shadow: 0 0 0 4px rgba(79,163,143,.18); }
+
+.gallery-placas .shot { width: 280px; }
+.gallery-placas .shot img { border: 0; border-radius: 16px; box-shadow: 0 0 0 1px rgba(255,255,255,.08), 0 30px 60px -25px rgba(0,0,0,.8); }
+.gallery-placas .shot:nth-child(even) { margin-top: 36px; }
+@media (max-width: 480px) { .gallery-placas .shot { width: 230px; } }
+
+.kit-head { margin-top: 90px; }
+.kit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.kit-card { border-radius: var(--radius); overflow: hidden; background: rgba(255,255,255,.04); border: 1px solid var(--night-line); transition: transform .5s var(--spring), border-color .3s, opacity .9s var(--ease), filter .9s var(--ease); }
+.kit-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,.16); }
+.kit-card img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; background: #eef2f5; }
+.kit-card div { padding: 22px 24px 26px; }
+.kit-card h4 { margin: 0; font: 700 18px/1.3 var(--sans); color: var(--on-night); }
+.kit-card p { margin-top: 6px; font-size: 15px; line-height: 1.55; color: var(--on-night-3); }
+@media (max-width: 900px) { .kit-grid { grid-template-columns: 1fr; max-width: 560px; } }
+@media (max-width: 560px) { .calcagno .tabs { overflow-x: auto; max-width: 100%; } }
