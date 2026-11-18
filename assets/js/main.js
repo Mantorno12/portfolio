@@ -133,29 +133,32 @@
     });
   });
 
-  /* Pestañas de pantallas de Nidalia: cambian solas hasta que tocás una */
-  var imgTabs = document.querySelectorAll('.img-tab');
-  var slides = document.querySelectorAll('.browser-slides .slide');
-  var slideIdx = 0, slideTimer = null;
-  function showSlide(i) {
-    slideIdx = i;
-    imgTabs.forEach(function (t, k) { t.classList.toggle('is-active', k === i); t.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
-    slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
-  }
-  imgTabs.forEach(function (t, k) {
-    t.addEventListener('click', function () { clearInterval(slideTimer); slideTimer = null; showSlide(k); });
+  /* Pestañas de pantallas (Nidalia y Calcagno): cambian solas hasta que tocás una.
+     Cada navegador maneja sus propias pestañas. */
+  document.querySelectorAll('.browser').forEach(function (br) {
+    var screen = br.querySelector('.browser-slides');
+    var tabs = br.querySelectorAll('.img-tab');
+    if (!screen || !tabs.length) return;
+    var slides = screen.querySelectorAll('.slide');
+    var idx = 0, timer = null;
+    function show(i) {
+      idx = i;
+      tabs.forEach(function (t, k) { t.classList.toggle('is-active', k === i); t.setAttribute('aria-selected', k === i ? 'true' : 'false'); });
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+    }
+    tabs.forEach(function (t, k) {
+      t.addEventListener('click', function () { clearInterval(timer); timer = null; screen.dataset.stopped = '1'; show(k); });
+    });
+    if (!reduceMotion && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && timer === null && !screen.dataset.stopped) {
+            timer = setInterval(function () { show((idx + 1) % slides.length); }, 4200);
+          } else if (!e.isIntersecting && timer) { clearInterval(timer); timer = null; }
+        });
+      }, { threshold: 0.4 }).observe(screen);
+    }
   });
-  if (slides.length && !reduceMotion && 'IntersectionObserver' in window) {
-    var bro = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting && slideTimer === null && !e.target.dataset.stopped) {
-          slideTimer = setInterval(function () { showSlide((slideIdx + 1) % slides.length); }, 4200);
-        } else if (!e.isIntersecting && slideTimer) { clearInterval(slideTimer); slideTimer = null; }
-      });
-    }, { threshold: 0.4 });
-    bro.observe(document.querySelector('.browser-slides'));
-    imgTabs.forEach(function (t) { t.addEventListener('click', function () { document.querySelector('.browser-slides').dataset.stopped = '1'; }); });
-  }
 
   /* Parallax suave: algunos elementos se mueven un poco más lento que la página */
   var par = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));

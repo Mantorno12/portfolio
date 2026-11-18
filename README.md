@@ -7,6 +7,7 @@ Sitio personal donde muestro mi trabajo: apps, tableros y automatizaciones.
 ## Qué incluye
 
 - **VetAr**, el proyecto destacado: una app de salud para mascotas con ficha, historial clínico, recordatorios y un asistente con IA que usa los datos de cada mascota. Se presenta con videos del recorrido y capturas reales.
+- **Calcagno Seguros**, sitio web para un cliente real: un broker de seguros de Ramos Mejía. Se muestra con un recorrido en video en el celular, capturas de escritorio, las imágenes para WhatsApp y el kit interno (firmas de mail, mensajes listos y tarjetas para imprenta). En las capturas están ocultos los celulares y los apellidos del equipo, y el botón lleva al sitio publicado.
 - **Demo de reservas para un gimnasio**: clases, confirmación de turnos y vista del staff.
 - **Demo de turnos para un centro odontológico**: elección de especialidad y horario, confirmación, agenda y pacientes.
 - Servicios, forma de trabajo y contacto.
@@ -26,8 +27,8 @@ HTML, CSS y JavaScript sin frameworks ni proceso de compilación. Las fuentes de
 ├── assets/
 │   ├── css/styles.css      Estilos del sitio
 │   ├── js/main.js          Animaciones, videos y galería
-│   ├── img/                Capturas de VetAr (WebP)
-│   └── video/              Videos de VetAr y sus portadas
+│   ├── img/                Capturas de VetAr (WebP), de Nidalia y de Calcagno Seguros
+│   └── video/              Videos de VetAr, Nidalia y Calcagno Seguros, con sus portadas
 ├── img/                    Capturas de las demos
 ├── demos/
 │   ├── gimnasio/           Demo de reservas (con sus fuentes)
